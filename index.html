@@ -3,129 +3,324 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Confirmação de Interesse</title>
+  <title>Mayres Avelino | Conteúdos Exclusivos</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
   <style>
-    body {
+    :root {
+      --primary: #25D366;
+      --primary-hover: #128C7E;
+      --text: #f5f5f7;
+      --bg: #000;
+    }
+
+    * {
       margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #000;
-      color: white;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .section {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 15px 0;
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      perspective: 1500px;
+      background: linear-gradient(180deg, #000 0%, #050505 100%);
     }
-    .destaque {
-      background-color: #E91E63;
+
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
     }
-    .preto {
-      background-color: #000;
-      color: #ffffff;
+
+    .star {
+      position: absolute;
+      background-color: #fff;
+      border-radius: 50%;
+      animation: twinkle 5s infinite ease-in-out;
     }
-    .heading {
-      color: white;
-      font-family: 'Oswald', sans-serif;
-      font-size: 28px;
-      font-weight: 600;
-      margin: 15px auto;
-      letter-spacing: 0.8px;
-      text-align: center;
+
+    .shooting-star {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: linear-gradient(90deg, rgba(255,255,255,1), transparent);
+      border-radius: 50%;
+      opacity: 0;
+      z-index: -1;
     }
-    .text-block {
-      font-size: 24px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-align: center;
-      color: #ffffff;
-      margin: 30px 15px;
-      line-height: 1.5;
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
     }
-    .text-block p {
-      margin-bottom: 20px;
+
+    @keyframes shooting {
+      0% { transform: translate(0, 0); opacity: 1; }
+      100% { transform: translate(1000px, 600px); opacity: 0; }
     }
-    .text-uppercase {
-      text-transform: uppercase;
-    }
-    .quiz-buttons {
+
+    .main-container {
+      width: 100%;
+      min-height: 100vh;
       display: flex;
+      align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin: 30px 0;
+      padding: 2rem 0;
     }
-    .quiz-buttons a {
-      color: white;
-      font-size: 20px;
-      font-family: 'Work Sans', sans-serif;
-      font-weight: 600;
-      padding: 18px 60px;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: 0.3s ease;
+
+    .content-wrapper {
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 5%;
+      transform-style: preserve-3d;
+      animation: fadeIn 1.2s ease-out forwards;
     }
-    .btn-sim {
-      background-color: #4CAF50;
-      box-shadow: 0 0 15px #4CAF50;
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .btn-sim:hover {
-      background-color: #3e8e41;
-      box-shadow: 0 0 20px #3e8e41;
+
+    .image-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 0 20px #00ff40aa);
     }
-    .btn-nao {
-      background-color: #f44336;
-      box-shadow: 0 0 15px #f44336;
+
+    .drag-text {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #00ff40;
+      text-shadow: 0 0 10px #00ff40, 0 0 20px #00ff40;
+      margin-bottom: 1rem;
+      animation: pulse 1s infinite alternate;
     }
-    .btn-nao:hover {
-      background-color: #d32f2f;
-      box-shadow: 0 0 20px #d32f2f;
+
+    .cta-heading {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: #00ff40;
+      text-shadow: 0 0 10px #00ff40, 0 0 20px #00ff40;
+      animation: pulse 1s infinite alternate;
     }
-    .whatsapp-logo {
-      text-align: center;
-      margin: 30px 0;
+
+    @keyframes pulse {
+      0% { opacity: 0.8; }
+      100% { opacity: 1; text-shadow: 0 0 15px #00ff40, 0 0 30px #00ff40; }
     }
-    .whatsapp-logo img {
-      width: 80px;
+
+    .product-image {
+      max-width: 300px;
       height: auto;
+      border-radius: 12px;
+      animation: float 8s ease-in-out infinite;
+      transition: transform 0.4s ease;
     }
-    @media (max-width: 768px) {
-      .text-block {
-        font-size: 18px;
-      }
-      .quiz-buttons a {
-        padding: 15px 30px;
-        font-size: 18px;
-      }
-      .whatsapp-logo img {
-        width: 60px;
-      }
+
+    .product-image:hover {
+      transform: scale(1.03) rotateX(10deg) rotateY(-10deg);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .cta-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      color: #fff;
+      width: 100%;
+      max-width: 300px;
+      transition: all 0.3s ease;
+      background-size: 300% 300%;
+      background-position: center;
+      box-shadow: 0 0 15px #ffffff15, 0 0 30px #ffffff10 inset;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 0 25px #ffffff33;
+      background-position: top right;
+    }
+
+    .blue-btn { background: linear-gradient(135deg, #4285F4, #73b4ff); }
+    .pink-btn { background: linear-gradient(135deg, #FF4081, #ff79b0); }
+    .purple-btn { background: linear-gradient(135deg, #9C27B0, #d17ee5); }
+    .yellow-btn { background: linear-gradient(135deg, #FFC107, #ffe17c); color: #000; }
+    .red-btn { background: linear-gradient(135deg, #FF5252, #ff9494); }
+    .whatsapp-btn {
+      background: linear-gradient(135deg, #25D366, #1fb954);
+      margin-top: 2rem;
+      animation: float 5s ease-in-out infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .whatsapp-btn img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .disclaimer {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #ff4444;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .testimonials {
+      margin-top: 4rem;
+      padding: 2rem;
+      border-top: 2px solid #00ff40;
+      width: 100%;
+      max-width: 800px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .testimonial-heading {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #00ff40;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px #00ff40, 0 0 20px #00ff40;
+    }
+
+    .testimonial-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .testimonial {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      border: 1px solid #00ff40;
+      color: #f5f5f7;
+      font-style: italic;
+      box-shadow: 0 0 10px #00ff4055;
+    }
+
+    .testimonial img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #00ff40;
     }
   </style>
 </head>
 <body>
+  <div class="stars" id="stars"></div>
+  <div id="shooting-stars"></div>
 
-  <!-- Seção Destaque -->
-  <div class="section destaque">
-    <h1 class="heading">Mayres Avelino</h1>
+  <div class="main-container">
+    <div class="content-wrapper">
+      <div class="image-container">
+        <div class="drag-text">ARRASTE PRA BAIXO</div>
+        <img src="https://github.com/avelino-star/INSTA/blob/main/TABELA%20DE%20PREC%CC%A7OS.png?raw=true" alt="Pacotes Mayres Avelino" class="product-image">
+      </div>
+
+      <div class="cta-section">
+        <h1 class="cta-heading">ESCOLHA:</h1>
+        <a href="https://app.pushinpay.com.br/service/pay/9f228ee1-9c66-440a-bb2f-d01e74e2f09c" class="cta-button purple-btn">Pack Vip</a>
+        <a href="https://app.pushinpay.com.br/service/pay/9F212923-A2D9-4889-9576-0BE867F81AE3/9f228e02-4a29-462e-97d2-26284f72d1fc" class="cta-button pink-btn">Pack Completo</a>
+        <a href="https://app.pushinpay.com.br/service/pay/9f228ee1-9c66-440a-bb2f-d01e74e2f09c" class="cta-button yellow-btn">Pack do Pezinho</a>
+        <a href="https://app.pushinpay.com.br/service/pay/9f228f15-577f-402f-99c3-a4596c1d55db" class="cta-button red-btn">Pack Personalizado</a>
+        <a href="https://app.pushinpay.com.br/service/pay/9F212923-A2D9-4889-9576-0BE867F81AE3/9f228e02-4a29-462e-97d2-26284f72d1fc" class="cta-button blue-btn">Chamada de Video</a>
+        <a href="https://wa.me/message/FW3JE7JY2PAFL1" class="cta-button whatsapp-btn">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+          Enviar Comprovante
+        </a>
+        <p class="disclaimer"><strong>ATENÇÃO: O conteúdo comprado será enviado a você no Whatsapp assim que enviar o comprovante!</strong></p>
+      </div>
+
+      <div class="testimonials">
+        <h2 class="testimonial-heading">Elogios de Clientes 😍</h2>
+        <div class="testimonial-list">
+          <div class="testimonial">
+            <img src="https://github.com/avelino-star/INSTA-3/blob/main/IMG_1094.png?raw=true" alt="Cliente 1">
+            <p>"Simplesmente perfeita! Entrega rápida e conteúdo surreal. Já virei cliente fixa!"</p>
+          </div>
+          <div class="testimonial">
+            <img src="https://github.com/avelino-star/INSTA-3/blob/main/IMG_1096.png?raw=true" alt="Cliente 2">
+            <p>"O melhor pack que já comprei. Qualidade absurda e ainda super atenciosa!"</p>
+          </div>
+          <div class="testimonial">
+            <img src="https://github.com/avelino-star/INSTA-3/blob/main/IMG_1097.png?raw=true" alt="Cliente 3">
+            <p>"Ela é maravilhosa. Conteúdo exclusivo mesmo, vale cada centavo."</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Seção com fundo preto -->
-  <div class="section preto">
-    <div class="text-block">
-      <p>Você sabe que será bloqueado caso não tenha interesse em comprar algo.</p>
-      <p class="text-uppercase">DESEJA CONTINUAR?</p>
-    </div>
+  <script>
+    const starsContainer = document.getElementById('stars');
+    const shootingContainer = document.getElementById('shooting-stars');
 
-    <div class="quiz-buttons">
-      <a href="https://wa.me/message/FW3JE7JY2PAFL1" class="btn-sim">SIM</a>
-      <a href="https://instagram.com" class="btn-nao">NÃO</a>
-    </div>
+    for (let i = 0; i < 300; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      const size = Math.random() * 2 + 1;
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      starsContainer.appendChild(star);
+    }
 
-    <!-- Logo do WhatsApp -->
-    <div class="whatsapp-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
-    </div>
-  </div>
+    function createShootingStar() {
+      const star = document.createElement('div');
+      star.classList.add('shooting-star');
+      star.style.left = `${Math.random() * window.innerWidth}px`;
+      star.style.top = `${Math.random() * window.innerHeight}px`;
+      const size = Math.random() * 3 + 2;
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.animation = `shooting ${Math.random() * 1.5 + 1}s linear forwards`;
+      shootingContainer.appendChild(star);
+      setTimeout(() => star.remove(), 2000);
+    }
 
+    setInterval(() => {
+      for (let i = 0; i < 10; i++) {
+        setTimeout(createShootingStar, i * 100);
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
